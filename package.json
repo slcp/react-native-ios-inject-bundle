@@ -1,0 +1,9 @@
+{
+  "name": "rn-bundle-inject",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "folder-hash": "^3.3.2",
+    "yargs": "^15.4.0"
+  }
+}
