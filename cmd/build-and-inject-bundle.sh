@@ -43,7 +43,7 @@ zip -q -r "$PACKAGED_APP" .
 
 # Resign the new ipa.
 cd $IOS_ROOT
-IPA_PATH="$PACKAGED_APP" bundle exec fastlane "resign_${CERT_TYPE}_$IOS_STAGE"
+IPA_PATH="$PACKAGED_APP" fastlane "resign_app"
 unzip -o -q "$PACKAGED_APP" -d "$BUILD_DIR"
 # Verify the code signature is still valid
 codesign -v "$EXTRACTED_APP"
