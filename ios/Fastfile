@@ -1,0 +1,23 @@
+def resign_app(app_identifier, cert_type)
+  match(
+    app_identifier: app_identifier,
+    type: cert_type, 
+    readonly: is_ci,
+    output_path: 'certs'
+  )
+  prov_profile = File.expand_path(Dir.glob("../certs/*.mobileprovision").first)
+  resign(
+    ipa: ENV['IPA_PATH'],
+    signing_identity: "Your Signing Identity",
+    provisioning_profile: prov_profile
+  )
+end
+
+platform :ios do
+  lane :resign_app do
+    resign_app(
+      app_identifier="your.app.identifier",
+      cert_type="<cert_type>"
+    )
+  end
+end
